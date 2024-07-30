@@ -212,29 +212,50 @@ public class LinkedList {
         return true;
     }
 
+    //Floyed's cycle
+    public static boolean checkCycleInLinkedList(){
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next !=null ){
+            slow = slow.next; //increment by 1
+            fast = fast.next.next; //increment by 2
+
+            if(slow == fast){
+                return  true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
 //        linkedList.addFirst(1);
 //        linkedList.addFirst(2);
 //        linkedList.addFirst(2);
 
-        linkedList.addLast(3);
-        linkedList.addLast(4);
-        linkedList.addLast(4);
-        linkedList.addLast(3);
+//        linkedList.addLast(3);
+//        linkedList.addLast(4);
+//        linkedList.addLast(4);
+//        linkedList.addLast(3);
+        head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = head;
+        System.out.println("Is there a cycle: "+checkCycleInLinkedList());
 
 //        linkedList.addInMiddle(2, 50);
-        linkedList.printLinkedList();
-        System.out.println("Size of linked list: "+ size);
-        System.out.println("Is Palindrome: "+ linkedList.checkPalindrome());
-        System.out.println();
-        System.out.println("Element found at index: "+ linkedList.recursiveSearch(50));
-        linkedList.reverseLinkedList();
-        System.out.println("Reversed linked list: ");
-        linkedList.printLinkedList();
-        System.out.println();
-        linkedList.removeNthFromEnd(3);
-        linkedList.printLinkedList();
+//        linkedList.printLinkedList();
+//        System.out.println("Size of linked list: "+ size);
+//        System.out.println("Is Palindrome: "+ linkedList.checkPalindrome());
+//        System.out.println();
+//        System.out.println("Element found at index: "+ linkedList.recursiveSearch(50));
+//        linkedList.reverseLinkedList();
+//        System.out.println("Reversed linked list: ");
+//        linkedList.printLinkedList();
+//        System.out.println();
+//        linkedList.removeNthFromEnd(3);
+//        linkedList.printLinkedList();
 
 //        linkedList.removeFirst();
 //        linkedList.printLinkedList();
